@@ -1,0 +1,14 @@
+node_modules/
+.env
+*.env
+# Ignorer les fichiers Python compilés
+__pycache__/
+*.pyc
+
+# Ignorer les fichiers de builds (pour React par exemple)
+build/
+dist/
+
+# Ignorer les fichiers IDE
+.vscode/
+.idea/
