@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from '../axiosConfig'; // Importez votre configuration Axios
+import axiosInstance from '../axiosConfig'; 
 
 const LoanForm = () => {
     const [books, setBooks] = useState([]);
