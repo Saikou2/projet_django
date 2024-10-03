@@ -1,0 +1,13 @@
+.button {
+    background-color: #af4c91; /* Vert */
+    color: white; /* Texte blanc */
+    padding: 0px 10px; /* Espacement */
+    border: none; /* Pas de bordure */
+    border-radius: 3px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur au survol */
+    transition: background-color 0.3s; /* Transition pour l'effet de survol */
+  }
+  
+  .button:hover {
+    background-color: #a23286; /* Couleur au survol */
+  }
