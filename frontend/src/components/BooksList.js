@@ -14,14 +14,14 @@ const BookList = () => {
   const [message, setMessage] = useState('');
   const [isSuperuser, setIsSuperuser] = useState(false);
   
-  // Récupérer le token
+  
   const token = localStorage.getItem('access_token');
   console.log("Token récupéré :", token);
 
- // Fonction pour récupérer les livres et vérifier si l'utilisateur est superuser
+ 
 useEffect(() => {
 const fetchBooks = async () => {
-      // Récupérer le token depuis le localStorage
+     
       const token = localStorage.getItem('token');
 
       if (!token) {
@@ -31,10 +31,10 @@ const fetchBooks = async () => {
       }
 
       try {
-          // Récupérer la liste des livres
+          
           const bookResponse = await axios.get('http://localhost:8000/api/books/books/', {
               headers: {
-                  Authorization: `Bearer ${token}`, // Utilisation du token dans l'en-tête
+                  Authorization: `Bearer ${token}`, 
               },
           });
           console.log('Livres reçus:', bookResponse.data);
