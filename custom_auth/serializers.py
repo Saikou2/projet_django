@@ -15,17 +15,16 @@ class SignupSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
-            raise serializers.ValidationError({"password": "Password fields didn't match."})
+            raise serializers.ValidationError({"password": "Les mots de passe ne correspondent pas."})
         return attrs
 
     def create(self, validated_data):
-        validated_data.pop('password2')
-        user = User.objects.create(**validated_data)
+        validated_data.pop('password2')  # Supprimer le champ password2
+        user = User(**validated_data)  # Créer une instance de User
+        user.set_password(validated_data['password'])  # Hacher le mot de passe
+        user.save()  # Sauvegarder l'utilisateur
         return user
-from rest_framework import serializers
-from django.contrib.auth.models import User
 
-from rest_framework import serializers
 
 class LoginSerializer(serializers.Serializer):
     """
@@ -49,11 +48,11 @@ class UserSerializer(serializers.ModelSerializer):
         """
         instance.username = validated_data.get('username', instance.username)
         instance.email = validated_data.get('email', instance.email)
-        instance.save()
-        
+
+        # Hachage du mot de passe si fourni
         password = validated_data.get('password')
         if password:
             instance.set_password(password)
 
-        instance.save()
+        instance.save()  # Sauvegarder l'utilisateur
         return instance
